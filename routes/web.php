@@ -6,11 +6,12 @@ Route::group(['middleware'=>'checkAdminLogin'],function (){
 
     Route::get('/dashboard',[App\Http\Controllers\DashboardController::class,'dashboard']);
 
-    Route::get('/caterory',[App\Http\Controllers\CateroryController::class,'caterory']);
-    Route::post('/caterory-add',[App\Http\Controllers\CateroryController::class,'cateroryAdd']);
-    Route::get('/caterory-edit/{id}',[App\Http\Controllers\CateroryController::class,'cateroryEdit']);
-    Route::post('/caterory-update',[App\Http\Controllers\CateroryController::class,'cateroryUpdate']);
-    Route::get('/caterory-delete/{id}',[App\Http\Controllers\CateroryController::class,'cateroryDelete']);
+    Route::get('/category',[App\Http\Controllers\CategoryController::class,'category']);
+    Route::get('/category-create',[App\Http\Controllers\CategoryController::class,'categoryCreate']);
+    Route::post('/category-add',[App\Http\Controllers\CategoryController::class,'categoryAdd']);
+    Route::get('/category-edit/{id}',[App\Http\Controllers\CategoryController::class,'categoryEdit']);
+    Route::post('/category-update',[App\Http\Controllers\CategoryController::class,'categoryUpdate']);
+    Route::get('/category-delete/{id}',[App\Http\Controllers\CategoryController::class,'categoryDelete']);
 
     Route::get('/product',[App\Http\Controllers\ProductController::class,'product']);
     Route::get('/product-create',[App\Http\Controllers\ProductController::class,'productCreate']);
@@ -58,4 +59,5 @@ Route::post('/selective-product',[App\Http\Controllers\HomeController::class,'se
 
 
 
-Route::get('/order-success',[App\Http\Controllers\HomeController::class,'orderSuccess']);
+Route::get('/order-add',[App\Http\Controllers\HomeController::class,'orderSuccess']);
+//=============================================================================================================

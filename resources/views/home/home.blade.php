@@ -29,10 +29,10 @@
 @endif
 
     <form action="{{ url('/selective-product') }}" method="post" class="d-flex mb-2">@csrf
-        <select class="form-control w-25 me-2" name="caterory">
+        <select class="form-control w-25 me-2" name="category">
             <option value="0">Tất cả</option>
-            @foreach ($caterory as $i)
-                <option value="{{ $i->id_caterory }}">{{ $i->name_caterory }}</option>
+            @foreach ($category as $i)
+                <option value="{{ $i->id_category }}">{{ $i->name_category }}</option>
             @endforeach
         </select>
         <button type="submit" class="btn btn-info">Lọc</button>

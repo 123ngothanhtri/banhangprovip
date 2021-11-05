@@ -4,8 +4,8 @@
         <div class="col-md-7">
 <div style="min-height:60vh">
             <a href="{{ url('/') }}" class="btn btn-info m-2">Tiếp tục mua hàng <i class="fas fa-angle-double-right"></i></a>
-            @if (session('er'))
-                <div class="alert alert-danger"> {{ session('er') }}<button type="button" class="close" data-dismiss="alert">&times;</button></div>
+            @if (session('failure'))
+                <div class="alert alert-danger"><i class="fas fa-exclamation-triangle"></i> {{ session('failure') }}</div>
             @endif
             <table class="table table-hover ">
                 @foreach (Cart::content() as $row)

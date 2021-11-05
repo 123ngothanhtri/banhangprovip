@@ -13,7 +13,8 @@
                             {{ $s->name_product }}
                             <b class="text-danger d-block">{{ number_format($s->price_product) }}₫</b>
                         </a>
-                        <a href="{{ url('add-to-cart/' . $s->id_product) }}" class="btn d-block btn-warning ">Thêm vào giỏ hàng</a>
+                        {{-- <a href="{{ url('/add-to-cart/' . $s->id_product) }}" class="btn d-block btn-warning ">Thêm vào giỏ hàng</a> --}}
+                        <a href="{{ url('product-detail/' . $s->id_product) }}" class="btn d-block btn-warning ">Chi tiết</a>
 
                     </div>
                 </div>

@@ -25,7 +25,7 @@ class DashboardController extends Controller
     
         $dhcxn = DB::table('order')->where('status_order','0')->count('id_order');
         $dh = DB::table('order')->count('id_order');
-        $lsp = DB::table('caterory')->count('id_caterory');
+        $lsp = DB::table('category')->count('id_category');
         $sp = DB::table('product')->count('id_product');
     
         return view('admin.dashboard',compact('dhcxn','sp','tongSoLuongBan','tongDanhThu','lsp','dh','sanPhamDaBanNhieuNhat'));

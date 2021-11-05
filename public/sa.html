@@ -1,0 +1,2224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url(https://fonts.googleapis.com/css2?family=Anton&family=Kanit:wght@400;500&family=Noto+Sans+TC:wght@400;500;700;900&family=Roboto:wght@300;400;500;700;900&display=swap&subset=chinese-traditional,latin-ext,vietnamese);
+
+        html {
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            font-size: 16px;
+            line-height: 1.15;
+            -webkit-text-size-adjust: none
+        }
+
+        *,
+        :after,
+        :before {
+            -webkit-box-sizing: inherit;
+            box-sizing: inherit
+        }
+
+        body,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        ol,
+        p,
+        ul {
+            margin: 0;
+            padding: 0;
+            font-weight: 400
+        }
+
+        ol,
+        ul {
+            list-style: none
+        }
+
+        img {
+            max-width: 100%;
+            height: auto
+        }
+
+        button,
+        input,
+        optgroup,
+        select,
+        textarea {
+            font-family: inherit;
+            font-size: 100%;
+            line-height: 1.15;
+            margin: 0;
+            outline: none
+        }
+
+        * {
+            -ms-touch-action: pan-x pan-y;
+            touch-action: pan-x pan-y
+        }
+
+        .fade-enter-active,
+        .fade-leave-active {
+            -webkit-transition: opacity .35s ease;
+            transition: opacity .35s ease
+        }
+
+        .fade-enter-from,
+        .fade-leave-to {
+            opacity: 0
+        }
+
+        @-webkit-keyframes spin {
+            0% {
+                -webkit-transform: rotate(0deg) scale(1.2);
+                transform: rotate(0deg) scale(1.2)
+            }
+
+            to {
+                -webkit-transform: rotate(1turn) scale(1.2);
+                transform: rotate(1turn) scale(1.2)
+            }
+        }
+
+        @keyframes spin {
+            0% {
+                -webkit-transform: rotate(0deg) scale(1.2);
+                transform: rotate(0deg) scale(1.2)
+            }
+
+            to {
+                -webkit-transform: rotate(1turn) scale(1.2);
+                transform: rotate(1turn) scale(1.2)
+            }
+        }
+
+        @-webkit-keyframes scaleYIn {
+            0% {
+                -webkit-transform: translate(-50%, -50%) scaleY(0);
+                transform: translate(-50%, -50%) scaleY(0)
+            }
+
+            to {
+                -webkit-transform: translate(-50%, -50%) scaleY(1);
+                transform: translate(-50%, -50%) scaleY(1)
+            }
+        }
+
+        @keyframes scaleYIn {
+            0% {
+                -webkit-transform: translate(-50%, -50%) scaleY(0);
+                transform: translate(-50%, -50%) scaleY(0)
+            }
+
+            to {
+                -webkit-transform: translate(-50%, -50%) scaleY(1);
+                transform: translate(-50%, -50%) scaleY(1)
+            }
+        }
+
+        .modal-scaleY-enter-active {
+            -webkit-animation: scaleYIn both;
+            animation: scaleYIn both
+        }
+
+        @-webkit-keyframes scaleYOut {
+            0% {
+                -webkit-transform: translate(-50%, -50%) scaleY(1);
+                transform: translate(-50%, -50%) scaleY(1)
+            }
+
+            to {
+                -webkit-transform: translate(-50%, -50%) scaleY(0);
+                transform: translate(-50%, -50%) scaleY(0)
+            }
+        }
+
+        @keyframes scaleYOut {
+            0% {
+                -webkit-transform: translate(-50%, -50%) scaleY(1);
+                transform: translate(-50%, -50%) scaleY(1)
+            }
+
+            to {
+                -webkit-transform: translate(-50%, -50%) scaleY(0);
+                transform: translate(-50%, -50%) scaleY(0)
+            }
+        }
+
+        .modal-scaleY-leave-active {
+            -webkit-animation: scaleYOut both;
+            animation: scaleYOut both
+        }
+
+        .modal-wrapper {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            position: fixed;
+            z-index: 997;
+            -webkit-animation-duration: .3s;
+            animation-duration: .3s
+        }
+
+        .modal-wrapper>.loading,
+        .modal-wrapper>.modal-inner {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%)
+        }
+
+        .modal-wrapper>.modal-inner {
+            z-index: 998;
+            -webkit-animation-duration: .3s;
+            animation-duration: .3s
+        }
+
+        .balance-block {
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: .2rem;
+            font-size: .12rem;
+            color: #dde9f7
+        }
+
+        .balance-block>span {
+            display: inline-block;
+            margin: 0 .02rem
+        }
+
+        .balance-block>span.cp:before {
+            background: url(https://cdn.vn.garenanow.com/mgame/kgvn/hok/client/web/helpingslots2110/liliana/assets/mainpage/mainpage-balance-coupon.png) 50%/contain no-repeat
+        }
+
+        .balance-block>span.cp:before,
+        .balance-block>span.prop:before {
+            content: "";
+            display: inline-block;
+            width: .14rem;
+            height: .14rem;
+            -webkit-transform: translateY(.02rem);
+            transform: translateY(.02rem)
+        }
+
+        .balance-block>span.prop:before {
+            background: url(https://cdn.vn.garenanow.com/mgame/kgvn/hok/client/web/helpingslots2110/liliana/assets/mainpage/mainpage-balance-token.png) 50%/contain no-repeat
+        }
+
+        .balance-block>.video-icon {
+            width: .16rem
+        }
+
+        .balance-block>.video-icon>img {
+            display: block;
+            -webkit-transform: translateY(.03rem);
+            transform: translateY(.03rem)
+        }
+
+        .mainpage-slot-map {
+            position: absolute;
+            top: .3rem;
+            right: .7rem;
+            width: 3.6rem;
+            background: url(https://cdn.vn.garenanow.com/mgame/kgvn/hok/client/web/helpingslots2110/liliana/assets/mainpage/mainpage-planet.png) 50%/1rem auto no-repeat
+        }
+
+        .mainpage-slot-map>.mainpage-slot-list {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%
+        }
+
+        .mainpage-slot-map>.mainpage-slot-list>.mainpage-slot-item {
+            position: absolute;
+            width: .65rem;
+            -webkit-filter: drop-shadow(.03rem .03rem .08rem rgba(0, 0, 0, .7));
+            filter: drop-shadow(.03rem .03rem .08rem rgba(0, 0, 0, .7));
+            -webkit-transform: translateX(-50%);
+            transform: translateX(-50%)
+        }
+
+        .mainpage-slot-map>.mainpage-slot-list>.mainpage-slot-item.pos-1 {
+            left: 3.56rem;
+            top: .35rem
+        }
+
+        .mainpage-slot-map>.mainpage-slot-list>.mainpage-slot-item.pos-2 {
+            left: 3.3rem;
+            top: 1.03rem
+        }
+
+        .mainpage-slot-map>.mainpage-slot-list>.mainpage-slot-item.pos-3 {
+            left: 2.86rem;
+            top: 1.33rem
+        }
+
+        .mainpage-slot-map>.mainpage-slot-list>.mainpage-slot-item.pos-4 {
+            left: 2.36rem;
+            top: 1.5rem
+        }
+
+        .mainpage-slot-map>.mainpage-slot-list>.mainpage-slot-item.pos-5 {
+            left: 1.8rem;
+            top: 1.6rem
+        }
+
+        .mainpage-slot-map>.mainpage-slot-list>.mainpage-slot-item.pos-6 {
+            left: 1.16rem;
+            top: 1.56rem
+        }
+
+        .mainpage-slot-map>.mainpage-slot-list>.mainpage-slot-item.pos-7 {
+            left: .55rem;
+            top: 1.4rem
+        }
+
+        .mainpage-slot-map>.mainpage-slot-list>.mainpage-slot-item.pos-8 {
+            left: .13rem;
+            top: 1rem
+        }
+
+        .mainpage-slot-map>.mainpage-slot-list>.mainpage-slot-item.pos-9 {
+            left: .26rem;
+            top: .3rem
+        }
+
+        .mainpage-slot-map>.mainpage-slot-list>.mainpage-slot-item.pos-10 {
+            left: .7rem;
+            top: -.05rem
+        }
+
+        .mainpage-slot-map>.mainpage-slot-list>.mainpage-slot-item.pos-11 {
+            left: 1.34rem;
+            top: -.36rem
+        }
+
+        .mainpage-slot-map>.mainpage-slot-list>.mainpage-slot-item.pos-12 {
+            left: 2.04rem;
+            top: -.38rem
+        }
+
+        .mainpage-slot-map>.mainpage-slot-list>.mainpage-slot-item.pos-13 {
+            left: 2.6rem;
+            top: -.3rem
+        }
+
+        .mainpage-slot-map>.mainpage-slot-list>.mainpage-slot-item.pos-14 {
+            left: 3.12rem;
+            top: -.12rem
+        }
+
+        .mainpage-slot-map>.mainpage-slot-list>.mainpage-slot-item[data-size=big],
+        .mainpage-slot-map>.mainpage-slot-list>.mainpage-slot-item[data-size=grand] {
+            width: .9rem
+        }
+
+        .mainpage-slot-map>.mainpage-slot-list>.mainpage-slot-item.fade>.reward-img {
+            opacity: .6
+        }
+
+        .mainpage-slot-map>.mainpage-slot-list>.mainpage-slot-item>.reward-img {
+            position: absolute;
+            width: .3rem;
+            bottom: .1rem;
+            left: 0;
+            right: 0;
+            margin: auto;
+            border-radius: 50%
+        }
+
+        .mainpage-slot-map>.mainpage-slot-list>.mainpage-slot-item>.reward-img.win {
+            width: .5rem;
+            left: -.02rem;
+            bottom: .13rem
+        }
+
+        .mainpage-slot-map>.mainpage-slot-list>.mainpage-slot-item>.reward-img.grand {
+            position: relative;
+            max-width: none;
+            width: 100%;
+            opacity: 1
+        }
+
+        .mainpage-slot-map>.mainpage-slot-list>.mainpage-slot-item>.remove-frame {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0
+        }
+
+        .mainpage-slot-map .name-tip {
+            position: fixed;
+            width: .8rem;
+            font-size: .08rem;
+            padding: .02rem .04rem;
+            background: rgba(0, 0, 0, .7);
+            border-radius: .04rem;
+            z-index: 10;
+            -webkit-transform: translate(-100%, -.3rem);
+            transform: translate(-100%, -.3rem);
+            pointer-events: none;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none
+        }
+
+        .tagline {
+            position: absolute;
+            left: .2rem;
+            top: 0;
+            width: 1.3rem
+        }
+
+        .tagline>.rule-icon {
+            position: absolute;
+            bottom: 0;
+            left: 100%;
+            width: .16rem
+        }
+
+        .draw-btn {
+            position: absolute;
+            bottom: .15rem;
+            right: 1.7rem;
+            width: 1.4rem;
+            -webkit-transition: -webkit-transform .2s;
+            transition: -webkit-transform .2s;
+            transition: transform .2s;
+            transition: transform .2s, -webkit-transform .2s;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none
+        }
+
+        .draw-btn:active {
+            -webkit-transform: scale(.95);
+            transform: scale(.95)
+        }
+
+        .draw-btn>img {
+            display: block
+        }
+
+        .draw-btn>span {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: row;
+            flex-direction: row;
+            position: absolute;
+            height: 100%;
+            top: 0;
+            right: .08rem;
+            font-size: .12rem;
+            font-weight: 700;
+            color: #000
+        }
+
+        .draw-btn>span:before {
+            -webkit-transform: translateY(-.01rem);
+            transform: translateY(-.01rem);
+            margin-right: .01rem
+        }
+
+        .draw-btn>span.cp-icon:before {
+            background: url(https://cdn.vn.garenanow.com/mgame/kgvn/hok/client/web/helpingslots2110/liliana/assets/mainpage/mainpage-balance-coupon.png) 50%/contain no-repeat
+        }
+
+        .draw-btn>span.cp-icon:before,
+        .draw-btn>span.prop-icon:before {
+            content: "";
+            display: inline-block;
+            width: .14rem;
+            height: .14rem;
+            -webkit-transform: translateY(.02rem);
+            transform: translateY(.02rem)
+        }
+
+        .draw-btn>span.prop-icon:before {
+            background: url(https://cdn.vn.garenanow.com/mgame/kgvn/hok/client/web/helpingslots2110/liliana/assets/mainpage/mainpage-balance-token.png) 50%/contain no-repeat
+        }
+
+        .helping-btns-block {
+            position: absolute;
+            right: 0;
+            bottom: .1rem;
+            width: 1.5rem;
+            text-align: center;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none
+        }
+
+        .helping-btns-block>.helping-btn {
+            display: inline-block;
+            width: 1.1rem;
+            -webkit-transition: -webkit-transform .2s;
+            transition: -webkit-transform .2s;
+            transition: transform .2s;
+            transition: transform .2s, -webkit-transform .2s
+        }
+
+        .helping-btns-block>.helping-btn:active {
+            -webkit-transform: scale(.95);
+            transform: scale(.95)
+        }
+
+        .helping-btns-block>p {
+            color: #f3f3f3;
+            font-size: .1rem;
+            background: rgba(156, 129, 255, .6);
+            border-radius: .1rem;
+            text-align: center;
+            padding: .02rem .04rem;
+            -webkit-transform: scale(.8);
+            transform: scale(.8)
+        }
+
+        .view-home {
+            height: 100%;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box
+        }
+
+        .view-home>.content {
+            position: relative;
+            width: 100%;
+            height: 100%
+        }
+
+        .modal-wrapper {
+            background: rgba(0, 0, 0, .75)
+        }
+
+        .modal-wrapper.grand {
+            background-image: url(https://cdn.vn.garenanow.com/mgame/kgvn/hok/client/web/helpingslots2110/liliana/assets/popup/popup-grandprize-bg.png);
+            background-position: 50%;
+            background-size: cover
+        }
+
+        .modal-wrapper .modal-inner {
+            width: 5.5rem;
+            height: 2.8615520282rem;
+            background: url(https://cdn.vn.garenanow.com/mgame/kgvn/hok/client/web/helpingslots2110/liliana/assets/popup/popup-bg-01.png) 50%/cover no-repeat
+        }
+
+        .modal-wrapper .modal-inner>* {
+            padding: 0 .5rem
+        }
+
+        .modal-wrapper .modal-inner .content>h2 {
+            font-size: .16rem;
+            font-weight: 500;
+            margin-top: .08rem;
+            text-shadow: 0 0 .02rem rgba(47, 33, 87, .3)
+        }
+
+        .modal-wrapper .modal-inner .content>p:not(.deal-hint) {
+            margin: .08rem 0 .04rem;
+            font-size: .12rem;
+            color: #515254;
+            line-height: 1.5
+        }
+
+        .modal-wrapper .modal-inner .content>p:not(.deal-hint).text {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: row;
+            flex-direction: row
+        }
+
+        .modal-wrapper .modal-inner .content span.cp-icon:before {
+            background: url(https://cdn.vn.garenanow.com/mgame/kgvn/hok/client/web/helpingslots2110/liliana/assets/mainpage/mainpage-balance-coupon.png) 50%/contain no-repeat
+        }
+
+        .modal-wrapper .modal-inner .content span.cp-icon:before,
+        .modal-wrapper .modal-inner .content span.prop-icon:before {
+            content: "";
+            display: inline-block;
+            width: .14rem;
+            height: .14rem;
+            -webkit-transform: translateY(.02rem);
+            transform: translateY(.02rem)
+        }
+
+        .modal-wrapper .modal-inner .content span.prop-icon:before {
+            background: url(https://cdn.vn.garenanow.com/mgame/kgvn/hok/client/web/helpingslots2110/liliana/assets/mainpage/mainpage-balance-token.png) 50%/contain no-repeat
+        }
+
+        .modal-wrapper .modal-inner .content span.gray {
+            color: #8694a7;
+            font-size: .1rem
+        }
+
+        .modal-wrapper .modal-inner .content span.grand-text {
+            display: inline-block;
+            color: transparent;
+            font-size: .14rem;
+            font-weight: 500;
+            background: -webkit-gradient(linear, left bottom, left top, from(#8595d5), color-stop(#5c7fce), to(#2562be)) 50%;
+            background: linear-gradient(0deg, #8595d5, #5c7fce, #2562be) 50%;
+            -webkit-background-clip: text;
+            background-clip: text
+        }
+
+        .modal-wrapper .modal-inner .content>.btn-panel {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: row;
+            flex-direction: row;
+            margin-top: .08rem
+        }
+
+        .modal-wrapper .modal-inner.small {
+            width: 5.5rem;
+            height: 2.5365961199rem;
+            background-image: url(https://cdn.vn.garenanow.com/mgame/kgvn/hok/client/web/helpingslots2110/liliana/assets/popup/popup-bg-02.png)
+        }
+
+        .modal-wrapper .modal-inner.small>* {
+            padding: 0 .9rem
+        }
+
+        .modal-wrapper .modal-inner.small .content>h2 {
+            margin-top: .2rem
+        }
+
+        .modal-wrapper .modal-inner.grand {
+            width: 6.5rem;
+            height: 3.4047619048rem;
+            background-image: url(https://cdn.vn.garenanow.com/mgame/kgvn/hok/client/web/helpingslots2110/liliana/assets/popup/popup-grandprize.png);
+            background-position: center .2rem
+        }
+
+        .modal-wrapper .modal-inner.grand .content>h2 {
+            margin-top: .64rem
+        }
+
+        .modal-wrapper .modal-inner.grand .close-btn {
+            top: .4rem;
+            right: .2rem
+        }
+
+        .modal-wrapper .modal-inner.rule-tutorial {
+            background-image: url(https://cdn.vn.garenanow.com/mgame/kgvn/hok/client/web/helpingslots2110/liliana/assets/popup/popup-bg-tutorial.png)
+        }
+
+        .modal-wrapper .modal-inner.rule-rules {
+            background-image: url(https://cdn.vn.garenanow.com/mgame/kgvn/hok/client/web/helpingslots2110/liliana/assets/popup/popup-bg-rules.png)
+        }
+
+        .spinner {
+            display: inline-block;
+            border: 4px solid hsla(0, 0%, 77.3%, .5568627450980392);
+            border-top-color: #fff;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            -webkit-animation: spin .8s linear infinite;
+            animation: spin .8s linear infinite;
+            vertical-align: middle;
+            margin-right: .03rem
+        }
+
+        .aov-loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            width: 1rem;
+            height: 1rem;
+            background-image: url(https://dlgarenanow-a.akamaihd.net/mgames/kgtw/events/flipcard202007/assets/loading/common_loading_mask.png);
+            background-size: cover;
+            background-position: 50%
+        }
+
+        .aov-loading__spin {
+            width: 100%;
+            -webkit-animation: spin 2s linear infinite;
+            animation: spin 2s linear infinite
+        }
+
+        #overlay {
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #000 url(https://cdn.vn.garenanow.com/mgame/kgvn/hok/client/web/helpingslots2110/liliana/assets/loading.gif) 50% no-repeat;
+            background-size: 30% auto;
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+            pointer-events: none
+        }
+
+        #overlay,
+        html {
+            position: fixed
+        }
+
+        html {
+            background: #000;
+            overflow: hidden
+        }
+
+        @media only screen and (orientation:portrait) {
+            html {
+                -webkit-transform: rotate(90deg);
+                transform: rotate(90deg);
+                -webkit-transform-origin: 50vmin 50vmin;
+                transform-origin: 50vmin 50vmin
+            }
+        }
+
+        html body {
+            width: 100%;
+            height: 100%
+        }
+
+        html img {
+            pointer-events: none
+        }
+
+        #app {
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none
+        }
+
+        #app.video-fallback {
+            background: url(https://cdn.vn.garenanow.com/mgame/kgvn/hok/client/web/helpingslots2110/liliana/assets/mainpage/mainpage-background.jpg) 50%/cover no-repeat
+        }
+
+        #app>video.bgv {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            -o-object-fit: cover;
+            object-fit: cover
+        }
+
+        #app>video.bgv::-moz-media-controls,
+        #app>video.bgv::-ms-media-controls,
+        #app>video.bgv::-o-media-controls,
+        #app>video.bgv::-webkit-media-controls {
+            display: none !important
+        }
+
+        #app>img.bg-star {
+            width: 100%;
+            height: 100%;
+            -o-object-fit: cover;
+            object-fit: cover;
+            mix-blend-mode: screen
+        }
+
+        #app .main,
+        #app>img.bg-star {
+            position: absolute;
+            top: 0;
+            left: 0
+        }
+
+        #app .main {
+            width: 6.67rem;
+            height: 3.3rem;
+            right: 0;
+            bottom: 0;
+            margin: auto
+        }
+
+        #app {
+            height: 100%;
+            width: 100%;
+            font-size: .16rem;
+            font-family: Roboto, Arial, Helvetica, Droid Sans, sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            color: #fff;
+            text-align: center
+        }
+
+        #app>.main.lock {
+            pointer-events: none
+        }
+
+        .error-modal {
+            width: 100%;
+            height: 100%
+        }
+
+        .error-modal .content {
+            height: 100%
+        }
+
+        .error-modal .content .text {
+            height: 2.5rem
+        }
+
+        .video-modal {
+            width: 100%;
+            height: 100%
+        }
+
+        .video-modal .content {
+            height: 100%
+        }
+
+        .video-modal .content .video-wrapper {
+            width: 4rem;
+            margin: .2rem auto 0
+        }
+
+        .video-modal .content .video-wrapper>.iframe-wrapper {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%
+        }
+
+        .video-modal .content .video-wrapper>.iframe-wrapper>iframe {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%
+        }
+
+        .video-modal .content .video-wrapper>.iframe-wrapper>.video-cover {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, .7) url(https://cdn.vn.garenanow.com/mgame/kgvn/hok/client/web/helpingslots2110/liliana/assets/popup/popup-btn-vdo.png) 50%/.8rem no-repeat
+        }
+
+        .video-modal .content .video-wrapper>.iframe-wrapper>.video-cover.status-buffering,
+        .video-modal .content .video-wrapper>.iframe-wrapper>.video-cover.status-ended,
+        .video-modal .content .video-wrapper>.iframe-wrapper>.video-cover.status-playing {
+            top: .3rem;
+            bottom: .4rem;
+            background: transparent
+        }
+
+        .video-modal .content .video-wrapper>.iframe-wrapper>.video-cover.status-api-blocked {
+            display: none
+        }
+
+        @font-face {
+            font-family: swiper-icons;
+            src: url("data:application/font-woff;charset=utf-8;base64, d09GRgABAAAAAAZgABAAAAAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABGRlRNAAAGRAAAABoAAAAci6qHkUdERUYAAAWgAAAAIwAAACQAYABXR1BPUwAABhQAAAAuAAAANuAY7+xHU1VCAAAFxAAAAFAAAABm2fPczU9TLzIAAAHcAAAASgAAAGBP9V5RY21hcAAAAkQAAACIAAABYt6F0cBjdnQgAAACzAAAAAQAAAAEABEBRGdhc3AAAAWYAAAACAAAAAj//wADZ2x5ZgAAAywAAADMAAAD2MHtryVoZWFkAAABbAAAADAAAAA2E2+eoWhoZWEAAAGcAAAAHwAAACQC9gDzaG10eAAAAigAAAAZAAAArgJkABFsb2NhAAAC0AAAAFoAAABaFQAUGG1heHAAAAG8AAAAHwAAACAAcABAbmFtZQAAA/gAAAE5AAACXvFdBwlwb3N0AAAFNAAAAGIAAACE5s74hXjaY2BkYGAAYpf5Hu/j+W2+MnAzMYDAzaX6QjD6/4//Bxj5GA8AuRwMYGkAPywL13jaY2BkYGA88P8Agx4j+/8fQDYfA1AEBWgDAIB2BOoAeNpjYGRgYNBh4GdgYgABEMnIABJzYNADCQAACWgAsQB42mNgYfzCOIGBlYGB0YcxjYGBwR1Kf2WQZGhhYGBiYGVmgAFGBiQQkOaawtDAoMBQxXjg/wEGPcYDDA4wNUA2CCgwsAAAO4EL6gAAeNpj2M0gyAACqxgGNWBkZ2D4/wMA+xkDdgAAAHjaY2BgYGaAYBkGRgYQiAHyGMF8FgYHIM3DwMHABGQrMOgyWDLEM1T9/w8UBfEMgLzE////P/5//f/V/xv+r4eaAAeMbAxwIUYmIMHEgKYAYjUcsDAwsLKxc3BycfPw8jEQA/gZBASFhEVExcQlJKWkZWTl5BUUlZRVVNXUNTQZBgMAAMR+E+gAEQFEAAAAKgAqACoANAA+AEgAUgBcAGYAcAB6AIQAjgCYAKIArAC2AMAAygDUAN4A6ADyAPwBBgEQARoBJAEuATgBQgFMAVYBYAFqAXQBfgGIAZIBnAGmAbIBzgHsAAB42u2NMQ6CUAyGW568x9AneYYgm4MJbhKFaExIOAVX8ApewSt4Bic4AfeAid3VOBixDxfPYEza5O+Xfi04YADggiUIULCuEJK8VhO4bSvpdnktHI5QCYtdi2sl8ZnXaHlqUrNKzdKcT8cjlq+rwZSvIVczNiezsfnP/uznmfPFBNODM2K7MTQ45YEAZqGP81AmGGcF3iPqOop0r1SPTaTbVkfUe4HXj97wYE+yNwWYxwWu4v1ugWHgo3S1XdZEVqWM7ET0cfnLGxWfkgR42o2PvWrDMBSFj/IHLaF0zKjRgdiVMwScNRAoWUoH78Y2icB/yIY09An6AH2Bdu/UB+yxopYshQiEvnvu0dURgDt8QeC8PDw7Fpji3fEA4z/PEJ6YOB5hKh4dj3EvXhxPqH/SKUY3rJ7srZ4FZnh1PMAtPhwP6fl2PMJMPDgeQ4rY8YT6Gzao0eAEA409DuggmTnFnOcSCiEiLMgxCiTI6Cq5DZUd3Qmp10vO0LaLTd2cjN4fOumlc7lUYbSQcZFkutRG7g6JKZKy0RmdLY680CDnEJ+UMkpFFe1RN7nxdVpXrC4aTtnaurOnYercZg2YVmLN/d/gczfEimrE/fs/bOuq29Zmn8tloORaXgZgGa78yO9/cnXm2BpaGvq25Dv9S4E9+5SIc9PqupJKhYFSSl47+Qcr1mYNAAAAeNptw0cKwkAAAMDZJA8Q7OUJvkLsPfZ6zFVERPy8qHh2YER+3i/BP83vIBLLySsoKimrqKqpa2hp6+jq6RsYGhmbmJqZSy0sraxtbO3sHRydnEMU4uR6yx7JJXveP7WrDycAAAAAAAH//wACeNpjYGRgYOABYhkgZgJCZgZNBkYGLQZtIJsFLMYAAAw3ALgAeNolizEKgDAQBCchRbC2sFER0YD6qVQiBCv/H9ezGI6Z5XBAw8CBK/m5iQQVauVbXLnOrMZv2oLdKFa8Pjuru2hJzGabmOSLzNMzvutpB3N42mNgZGBg4GKQYzBhYMxJLMlj4GBgAYow/P/PAJJhLM6sSoWKfWCAAwDAjgbRAAB42mNgYGBkAIIbCZo5IPrmUn0hGA0AO8EFTQAA") format("woff");
+            font-weight: 400;
+            font-style: normal
+        }
+
+        :root {
+            --swiper-theme-color: #007aff
+        }
+
+        .swiper-container {
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            overflow: hidden;
+            list-style: none;
+            padding: 0;
+            z-index: 1
+        }
+
+        .swiper-container-vertical>.swiper-wrapper {
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+            flex-direction: column
+        }
+
+        .swiper-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-transition-property: -webkit-transform;
+            transition-property: -webkit-transform;
+            transition-property: transform;
+            transition-property: transform, -webkit-transform;
+            -webkit-box-sizing: content-box;
+            box-sizing: content-box
+        }
+
+        .swiper-container-android .swiper-slide,
+        .swiper-wrapper {
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0)
+        }
+
+        .swiper-container-multirow>.swiper-wrapper {
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap
+        }
+
+        .swiper-container-multirow-column>.swiper-wrapper {
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+            flex-direction: column
+        }
+
+        .swiper-container-free-mode>.swiper-wrapper {
+            -webkit-transition-timing-function: ease-out;
+            transition-timing-function: ease-out;
+            margin: 0 auto
+        }
+
+        .swiper-container-pointer-events {
+            -ms-touch-action: pan-y;
+            touch-action: pan-y
+        }
+
+        .swiper-container-pointer-events.swiper-container-vertical {
+            -ms-touch-action: pan-x;
+            touch-action: pan-x
+        }
+
+        .swiper-slide {
+            -ms-flex-negative: 0;
+            flex-shrink: 0;
+            width: 100%;
+            height: 100%;
+            position: relative;
+            -webkit-transition-property: -webkit-transform;
+            transition-property: -webkit-transform;
+            transition-property: transform;
+            transition-property: transform, -webkit-transform
+        }
+
+        .swiper-slide-invisible-blank {
+            visibility: hidden
+        }
+
+        .swiper-container-autoheight,
+        .swiper-container-autoheight .swiper-slide {
+            height: auto
+        }
+
+        .swiper-container-autoheight .swiper-wrapper {
+            -webkit-box-align: start;
+            -ms-flex-align: start;
+            align-items: flex-start;
+            -webkit-transition-property: height, -webkit-transform;
+            transition-property: height, -webkit-transform;
+            transition-property: transform, height;
+            transition-property: transform, height, -webkit-transform
+        }
+
+        .swiper-container-3d {
+            -webkit-perspective: 1200px;
+            perspective: 1200px
+        }
+
+        .swiper-container-3d .swiper-cube-shadow,
+        .swiper-container-3d .swiper-slide,
+        .swiper-container-3d .swiper-slide-shadow-bottom,
+        .swiper-container-3d .swiper-slide-shadow-left,
+        .swiper-container-3d .swiper-slide-shadow-right,
+        .swiper-container-3d .swiper-slide-shadow-top,
+        .swiper-container-3d .swiper-wrapper {
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d
+        }
+
+        .swiper-container-3d .swiper-slide-shadow-bottom,
+        .swiper-container-3d .swiper-slide-shadow-left,
+        .swiper-container-3d .swiper-slide-shadow-right,
+        .swiper-container-3d .swiper-slide-shadow-top {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10
+        }
+
+        .swiper-container-3d .swiper-slide-shadow-left {
+            background-image: -webkit-gradient(linear, right top, left top, from(rgba(0, 0, 0, .5)), to(transparent));
+            background-image: linear-gradient(270deg, rgba(0, 0, 0, .5), transparent)
+        }
+
+        .swiper-container-3d .swiper-slide-shadow-right {
+            background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, .5)), to(transparent));
+            background-image: linear-gradient(90deg, rgba(0, 0, 0, .5), transparent)
+        }
+
+        .swiper-container-3d .swiper-slide-shadow-top {
+            background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, .5)), to(transparent));
+            background-image: linear-gradient(0deg, rgba(0, 0, 0, .5), transparent)
+        }
+
+        .swiper-container-3d .swiper-slide-shadow-bottom {
+            background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, .5)), to(transparent));
+            background-image: linear-gradient(180deg, rgba(0, 0, 0, .5), transparent)
+        }
+
+        .swiper-container-css-mode>.swiper-wrapper {
+            overflow: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none
+        }
+
+        .swiper-container-css-mode>.swiper-wrapper::-webkit-scrollbar {
+            display: none
+        }
+
+        .swiper-container-css-mode>.swiper-wrapper>.swiper-slide {
+            scroll-snap-align: start start
+        }
+
+        .swiper-container-horizontal.swiper-container-css-mode>.swiper-wrapper {
+            -ms-scroll-snap-type: x mandatory;
+            scroll-snap-type: x mandatory
+        }
+
+        .swiper-container-vertical.swiper-container-css-mode>.swiper-wrapper {
+            -ms-scroll-snap-type: y mandatory;
+            scroll-snap-type: y mandatory
+        }
+
+        :root {
+            --swiper-navigation-size: 44px
+        }
+
+        .swiper-button-next,
+        .swiper-button-prev {
+            position: absolute;
+            top: 50%;
+            width: calc(var(--swiper-navigation-size)/44*27);
+            height: var(--swiper-navigation-size);
+            margin-top: calc(0px - var(--swiper-navigation-size)/2);
+            z-index: 10;
+            cursor: pointer;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            color: var(--swiper-navigation-color, var(--swiper-theme-color))
+        }
+
+        .swiper-button-next.swiper-button-disabled,
+        .swiper-button-prev.swiper-button-disabled {
+            opacity: .35;
+            cursor: auto;
+            pointer-events: none
+        }
+
+        .swiper-button-next:after,
+        .swiper-button-prev:after {
+            font-family: swiper-icons;
+            font-size: var(--swiper-navigation-size);
+            text-transform: none !important;
+            letter-spacing: 0;
+            text-transform: none;
+            font-variant: normal;
+            line-height: 1
+        }
+
+        .swiper-button-prev,
+        .swiper-container-rtl .swiper-button-next {
+            left: 10px;
+            right: auto
+        }
+
+        .swiper-button-prev:after,
+        .swiper-container-rtl .swiper-button-next:after {
+            content: "prev"
+        }
+
+        .swiper-button-next,
+        .swiper-container-rtl .swiper-button-prev {
+            right: 10px;
+            left: auto
+        }
+
+        .swiper-button-next:after,
+        .swiper-container-rtl .swiper-button-prev:after {
+            content: "next"
+        }
+
+        .swiper-button-next.swiper-button-white,
+        .swiper-button-prev.swiper-button-white {
+            --swiper-navigation-color: #fff
+        }
+
+        .swiper-button-next.swiper-button-black,
+        .swiper-button-prev.swiper-button-black {
+            --swiper-navigation-color: #000
+        }
+
+        .swiper-button-lock {
+            display: none
+        }
+
+        .swiper-pagination {
+            position: absolute;
+            text-align: center;
+            -webkit-transition: opacity .3s;
+            transition: opacity .3s;
+            -webkit-transform: translateZ(0);
+            transform: translateZ(0);
+            z-index: 10
+        }
+
+        .swiper-pagination.swiper-pagination-hidden {
+            opacity: 0
+        }
+
+        .swiper-container-horizontal>.swiper-pagination-bullets,
+        .swiper-pagination-custom,
+        .swiper-pagination-fraction {
+            bottom: 10px;
+            left: 0;
+            width: 100%
+        }
+
+        .swiper-pagination-bullets-dynamic {
+            overflow: hidden;
+            font-size: 0
+        }
+
+        .swiper-pagination-bullets-dynamic .swiper-pagination-bullet {
+            -webkit-transform: scale(.33);
+            transform: scale(.33);
+            position: relative
+        }
+
+        .swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active,
+        .swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-main {
+            -webkit-transform: scale(1);
+            transform: scale(1)
+        }
+
+        .swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-prev {
+            -webkit-transform: scale(.66);
+            transform: scale(.66)
+        }
+
+        .swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-prev-prev {
+            -webkit-transform: scale(.33);
+            transform: scale(.33)
+        }
+
+        .swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-next {
+            -webkit-transform: scale(.66);
+            transform: scale(.66)
+        }
+
+        .swiper-pagination-bullets-dynamic .swiper-pagination-bullet-active-next-next {
+            -webkit-transform: scale(.33);
+            transform: scale(.33)
+        }
+
+        .swiper-pagination-bullet {
+            width: 8px;
+            height: 8px;
+            display: inline-block;
+            border-radius: 50%;
+            background: #000;
+            opacity: .2
+        }
+
+        button.swiper-pagination-bullet {
+            border: none;
+            margin: 0;
+            padding: 0;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none
+        }
+
+        .swiper-pagination-clickable .swiper-pagination-bullet {
+            cursor: pointer
+        }
+
+        .swiper-pagination-bullet:only-child {
+            display: none !important
+        }
+
+        .swiper-pagination-bullet-active {
+            opacity: 1;
+            background: var(--swiper-pagination-color, var(--swiper-theme-color))
+        }
+
+        .swiper-container-vertical>.swiper-pagination-bullets {
+            right: 10px;
+            top: 50%;
+            -webkit-transform: translate3d(0, -50%, 0);
+            transform: translate3d(0, -50%, 0)
+        }
+
+        .swiper-container-vertical>.swiper-pagination-bullets .swiper-pagination-bullet {
+            margin: 6px 0;
+            display: block
+        }
+
+        .swiper-container-vertical>.swiper-pagination-bullets.swiper-pagination-bullets-dynamic {
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+            width: 8px
+        }
+
+        .swiper-container-vertical>.swiper-pagination-bullets.swiper-pagination-bullets-dynamic .swiper-pagination-bullet {
+            display: inline-block;
+            -webkit-transition: transform .2s, top .2s;
+            transition: transform .2s, top .2s
+        }
+
+        .swiper-container-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet {
+            margin: 0 4px
+        }
+
+        .swiper-container-horizontal>.swiper-pagination-bullets.swiper-pagination-bullets-dynamic {
+            left: 50%;
+            -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+            white-space: nowrap
+        }
+
+        .swiper-container-horizontal>.swiper-pagination-bullets.swiper-pagination-bullets-dynamic .swiper-pagination-bullet {
+            -webkit-transition: transform .2s, left .2s;
+            transition: transform .2s, left .2s
+        }
+
+        .swiper-container-horizontal.swiper-container-rtl>.swiper-pagination-bullets-dynamic .swiper-pagination-bullet {
+            -webkit-transition: transform .2s, right .2s;
+            transition: transform .2s, right .2s
+        }
+
+        .swiper-pagination-progressbar {
+            background: rgba(0, 0, 0, .25);
+            position: absolute
+        }
+
+        .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
+            background: var(--swiper-pagination-color, var(--swiper-theme-color));
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            -webkit-transform: scale(0);
+            transform: scale(0);
+            -webkit-transform-origin: left top;
+            transform-origin: left top
+        }
+
+        .swiper-container-rtl .swiper-pagination-progressbar .swiper-pagination-progressbar-fill {
+            -webkit-transform-origin: right top;
+            transform-origin: right top
+        }
+
+        .swiper-container-horizontal>.swiper-pagination-progressbar,
+        .swiper-container-vertical>.swiper-pagination-progressbar.swiper-pagination-progressbar-opposite {
+            width: 100%;
+            height: 4px;
+            left: 0;
+            top: 0
+        }
+
+        .swiper-container-horizontal>.swiper-pagination-progressbar.swiper-pagination-progressbar-opposite,
+        .swiper-container-vertical>.swiper-pagination-progressbar {
+            width: 4px;
+            height: 100%;
+            left: 0;
+            top: 0
+        }
+
+        .swiper-pagination-white {
+            --swiper-pagination-color: #fff
+        }
+
+        .swiper-pagination-black {
+            --swiper-pagination-color: #000
+        }
+
+        .swiper-pagination-lock {
+            display: none
+        }
+
+        .swiper-scrollbar {
+            border-radius: 10px;
+            position: relative;
+            -ms-touch-action: none;
+            background: rgba(0, 0, 0, .1)
+        }
+
+        .swiper-container-horizontal>.swiper-scrollbar {
+            position: absolute;
+            left: 1%;
+            bottom: 3px;
+            z-index: 50;
+            height: 5px;
+            width: 98%
+        }
+
+        .swiper-container-vertical>.swiper-scrollbar {
+            position: absolute;
+            right: 3px;
+            top: 1%;
+            z-index: 50;
+            width: 5px;
+            height: 98%
+        }
+
+        .swiper-scrollbar-drag {
+            height: 100%;
+            width: 100%;
+            position: relative;
+            background: rgba(0, 0, 0, .5);
+            border-radius: 10px;
+            left: 0;
+            top: 0
+        }
+
+        .swiper-scrollbar-cursor-drag {
+            cursor: move
+        }
+
+        .swiper-scrollbar-lock {
+            display: none
+        }
+
+        .swiper-zoom-container {
+            width: 100%;
+            height: 100%;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            text-align: center
+        }
+
+        .swiper-zoom-container>canvas,
+        .swiper-zoom-container>img,
+        .swiper-zoom-container>svg {
+            max-width: 100%;
+            max-height: 100%;
+            -o-object-fit: contain;
+            object-fit: contain
+        }
+
+        .swiper-slide-zoomed {
+            cursor: move
+        }
+
+        .swiper-lazy-preloader {
+            width: 42px;
+            height: 42px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -21px;
+            margin-top: -21px;
+            z-index: 10;
+            -webkit-transform-origin: 50%;
+            transform-origin: 50%;
+            -webkit-animation: swiper-preloader-spin 1s linear infinite;
+            animation: swiper-preloader-spin 1s linear infinite;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            border-radius: 50%;
+            border: 4px solid var(--swiper-preloader-color, var(--swiper-theme-color));
+            border-top: 4px solid transparent
+        }
+
+        .swiper-lazy-preloader-white {
+            --swiper-preloader-color: #fff
+        }
+
+        .swiper-lazy-preloader-black {
+            --swiper-preloader-color: #000
+        }
+
+        @-webkit-keyframes swiper-preloader-spin {
+            to {
+                -webkit-transform: rotate(1turn);
+                transform: rotate(1turn)
+            }
+        }
+
+        @keyframes swiper-preloader-spin {
+            to {
+                -webkit-transform: rotate(1turn);
+                transform: rotate(1turn)
+            }
+        }
+
+        .swiper-container .swiper-notification {
+            position: absolute;
+            left: 0;
+            top: 0;
+            pointer-events: none;
+            opacity: 0;
+            z-index: -1000
+        }
+
+        .swiper-container-fade.swiper-container-free-mode .swiper-slide {
+            -webkit-transition-timing-function: ease-out;
+            transition-timing-function: ease-out
+        }
+
+        .swiper-container-fade .swiper-slide {
+            pointer-events: none;
+            -webkit-transition-property: opacity;
+            transition-property: opacity
+        }
+
+        .swiper-container-fade .swiper-slide .swiper-slide {
+            pointer-events: none
+        }
+
+        .swiper-container-fade .swiper-slide-active,
+        .swiper-container-fade .swiper-slide-active .swiper-slide-active {
+            pointer-events: auto
+        }
+
+        .swiper-container-cube {
+            overflow: visible
+        }
+
+        .swiper-container-cube .swiper-slide {
+            pointer-events: none;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            z-index: 1;
+            visibility: hidden;
+            -webkit-transform-origin: 0 0;
+            transform-origin: 0 0;
+            width: 100%;
+            height: 100%
+        }
+
+        .swiper-container-cube .swiper-slide .swiper-slide {
+            pointer-events: none
+        }
+
+        .swiper-container-cube.swiper-container-rtl .swiper-slide {
+            -webkit-transform-origin: 100% 0;
+            transform-origin: 100% 0
+        }
+
+        .swiper-container-cube .swiper-slide-active,
+        .swiper-container-cube .swiper-slide-active .swiper-slide-active {
+            pointer-events: auto
+        }
+
+        .swiper-container-cube .swiper-slide-active,
+        .swiper-container-cube .swiper-slide-next,
+        .swiper-container-cube .swiper-slide-next+.swiper-slide,
+        .swiper-container-cube .swiper-slide-prev {
+            pointer-events: auto;
+            visibility: visible
+        }
+
+        .swiper-container-cube .swiper-slide-shadow-bottom,
+        .swiper-container-cube .swiper-slide-shadow-left,
+        .swiper-container-cube .swiper-slide-shadow-right,
+        .swiper-container-cube .swiper-slide-shadow-top {
+            z-index: 0;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden
+        }
+
+        .swiper-container-cube .swiper-cube-shadow {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            opacity: .6;
+            z-index: 0
+        }
+
+        .swiper-container-cube .swiper-cube-shadow:before {
+            content: "";
+            background: #000;
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            -webkit-filter: blur(50px);
+            filter: blur(50px)
+        }
+
+        .swiper-container-flip {
+            overflow: visible
+        }
+
+        .swiper-container-flip .swiper-slide {
+            pointer-events: none;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            z-index: 1
+        }
+
+        .swiper-container-flip .swiper-slide .swiper-slide {
+            pointer-events: none
+        }
+
+        .swiper-container-flip .swiper-slide-active,
+        .swiper-container-flip .swiper-slide-active .swiper-slide-active {
+            pointer-events: auto
+        }
+
+        .swiper-container-flip .swiper-slide-shadow-bottom,
+        .swiper-container-flip .swiper-slide-shadow-left,
+        .swiper-container-flip .swiper-slide-shadow-right,
+        .swiper-container-flip .swiper-slide-shadow-top {
+            z-index: 0;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden
+        }
+
+        .rule-modal {
+            width: 100%;
+            height: 100%
+        }
+
+        .rule-modal .content {
+            height: 100%
+        }
+
+        .rule-modal .content .title-list {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: row;
+            flex-direction: row;
+            height: .3rem;
+            margin-bottom: .2rem
+        }
+
+        .rule-modal .content .title-list>h2 {
+            width: 50%;
+            opacity: 0
+        }
+
+        .rule-modal .content .title-list>h2.active {
+            z-index: 2
+        }
+
+        .rule-modal .content>.play-intro {
+            position: relative;
+            padding: 0 .4rem
+        }
+
+        .rule-modal .content>.play-intro .play-intro-swiper .swiper-slide {
+            min-height: 1.5rem
+        }
+
+        .rule-modal .content>.play-intro .swiper-button-next,
+        .rule-modal .content>.play-intro .swiper-button-prev {
+            width: .3rem;
+            height: .5025rem;
+            margin-top: 0;
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%)
+        }
+
+        .rule-modal .content>.play-intro .swiper-button-next:after,
+        .rule-modal .content>.play-intro .swiper-button-prev:after {
+            content: "";
+            width: 100%;
+            height: 100%;
+            background: url(https://cdn.vn.garenanow.com/mgame/kgvn/hok/client/web/helpingslots2110/liliana/assets/popup/popup-eventrules-arrow.png) 50%/cover
+        }
+
+        .rule-modal .content>.play-intro .swiper-button-prev {
+            left: .1rem
+        }
+
+        .rule-modal .content>.play-intro .swiper-button-prev:after {
+            -webkit-transform: scaleX(-1);
+            transform: scaleX(-1)
+        }
+
+        .rule-modal .content>.play-intro .swiper-button-next {
+            right: .1rem
+        }
+
+        .rule-modal .content>.play-intro .swiper-pagination {
+            letter-spacing: .03rem;
+            font-size: .1rem;
+            font-weight: 500;
+            color: #556da5;
+            top: 103%;
+            left: 0;
+            right: 0;
+            margin: auto
+        }
+
+        .rule-modal .content>.play-intro .swiper-pagination-bullet {
+            margin: 0 .06rem
+        }
+
+        .rule-modal .content>.event-rule {
+            text-align: left;
+            color: #5b5b5b;
+            font-size: .1rem;
+            height: 2.2rem;
+            margin-right: .2rem;
+            margin-left: .2rem;
+            padding-top: .1rem;
+            padding-right: .2rem;
+            padding-left: .2rem;
+            overflow: auto
+        }
+
+        .rule-modal .content>.event-rule .event-rule-content ol,
+        .rule-modal .content>.event-rule .event-rule-content ul {
+            padding-left: 1em
+        }
+
+        .rule-modal .content>.event-rule .event-rule-content ul {
+            list-style-type: disc
+        }
+
+        .rule-modal .content>.event-rule .event-rule-content ol {
+            list-style-type: normal
+        }
+
+        .rule-modal .content>.event-rule .event-rule-content li,
+        .rule-modal .content>.event-rule .event-rule-content p {
+            margin-bottom: 1em
+        }
+
+        .rule-modal .content>.event-rule .event-rule-content span {
+            color: #5f86f1;
+            font-weight: 500
+        }
+
+        .select-prize-modal {
+            width: 100%;
+            height: 100%
+        }
+
+        .select-prize-modal .content {
+            height: 100%
+        }
+
+        .select-prize-modal .content .pool-wrapper {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+            justify-content: space-between;
+            padding: 0 .4rem
+        }
+
+        .select-prize-modal .content .pool-wrapper .prize-pool {
+            width: 47%
+        }
+
+        .select-prize-modal .content .pool-wrapper .prize-pool>h3 {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: row;
+            flex-direction: row;
+            width: 100%;
+            height: .3rem;
+            font-size: .12rem;
+            margin-bottom: .04rem;
+            background: url(https://cdn.vn.garenanow.com/mgame/kgvn/hok/client/web/helpingslots2110/liliana/assets/popup/popup-tab.png) 50%/contain no-repeat
+        }
+
+        .select-prize-modal .content .pool-wrapper .prize-pool>ul {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: start;
+            -ms-flex-pack: start;
+            justify-content: flex-start;
+            -webkit-box-align: start;
+            -ms-flex-align: start;
+            align-items: flex-start;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            height: 1.4rem;
+            overflow: auto
+        }
+
+        .select-prize-modal .content .pool-wrapper .prize-pool>ul>.reward-item {
+            width: 33.3333333333%;
+            padding: 0 .04rem
+        }
+
+        .select-prize-modal .content .select-list {
+            padding: 0 .4rem;
+            height: 1.5rem;
+            overflow: auto
+        }
+
+        .select-prize-modal .content .select-list.center,
+        .select-prize-modal .content .select-list .select-list-wrap {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: row;
+            flex-direction: row
+        }
+
+        .select-prize-modal .content .select-list .select-list-wrap {
+            -webkit-box-align: start;
+            -ms-flex-align: start;
+            align-items: flex-start;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            width: 100%
+        }
+
+        .select-prize-modal .content .select-list .select-list-wrap>.reward-item {
+            width: 20%;
+            padding: .04rem
+        }
+
+        .purchase-now .purchase-now-btn {
+            position: relative;
+            display: -webkit-inline-box;
+            display: -ms-inline-flexbox;
+            display: inline-flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            width: .76rem;
+            height: .24067rem;
+            -webkit-transition: -webkit-transform .2s;
+            transition: -webkit-transform .2s;
+            transition: transform .2s;
+            transition: transform .2s, -webkit-transform .2s;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none
+        }
+
+        .purchase-now .purchase-now-btn:active {
+            -webkit-transform: scale(.95);
+            transform: scale(.95)
+        }
+
+        .purchase-now .purchase-now-btn.dot:after {
+            content: "";
+            position: absolute;
+            top: -.01rem;
+            right: .02rem;
+            width: .07rem;
+            height: .07rem;
+            border-radius: 50%;
+            background: red
+        }
+
+        .purchase-now .purchase-now-btn>img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: -1
+        }
+
+        .purchase-now .purchase-now-btn>span {
+            font-size: .1rem
+        }
+
+        .purchase-now>.max-save {
+            font-size: .1rem;
+            color: #000;
+            padding: .02rem .05rem;
+            margin-top: .04rem;
+            border-radius: .1rem;
+            background: hsla(0, 0%, 100%, .5)
+        }
+
+        .teammate-modal {
+            width: 100%;
+            height: 100%
+        }
+
+        .teammate-modal .content {
+            height: 100%
+        }
+
+        .teammate-modal .content .deal-list-container {
+            padding: 0 .3rem
+        }
+
+        .teammate-modal .content .deal-list-container,
+        .teammate-modal .content .deal-list-container .deal-list {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: row;
+            flex-direction: row;
+            -webkit-box-align: start;
+            -ms-flex-align: start;
+            align-items: flex-start
+        }
+
+        .teammate-modal .content .deal-list-container .deal-list .reward-item {
+            width: .7rem;
+            padding: .04rem
+        }
+
+        .teammate-modal .content .buy-list {
+            height: .9rem
+        }
+
+        .teammate-modal .content .buy-list,
+        .teammate-modal .content .buy-list .buy-list-wrap {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: row;
+            flex-direction: row
+        }
+
+        .teammate-modal .content .buy-list .buy-list-wrap {
+            -webkit-box-align: start;
+            -ms-flex-align: start;
+            align-items: flex-start
+        }
+
+        .teammate-modal .content .buy-list .buy-list-wrap .reward-item {
+            width: .7rem;
+            padding: .04rem
+        }
+
+        .teammate-modal .content .greyout-deal-container {
+            margin: .1rem .3rem 0;
+            background: rgba(0, 0, 0, .1);
+            border-radius: .06rem
+        }
+
+        .teammate-modal .content .greyout-deal-container,
+        .teammate-modal .content .greyout-deal-container .greyout-deal-list {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: row;
+            flex-direction: row
+        }
+
+        .teammate-modal .content .greyout-deal-container .greyout-deal-list {
+            -webkit-box-align: start;
+            -ms-flex-align: start;
+            align-items: flex-start
+        }
+
+        .teammate-modal .content .greyout-deal-container .greyout-deal-list .greyout-deal-item {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            width: 1.2rem;
+            padding: .04rem
+        }
+
+        .teammate-modal .content .greyout-deal-container .greyout-deal-list .greyout-deal-item>.reward-item-wrap {
+            width: 40%
+        }
+
+        .teammate-modal .content .greyout-deal-container .greyout-deal-list .greyout-deal-item>p {
+            width: 60%
+        }
+
+        .teammate-modal .content .slot-reward-list {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: row;
+            flex-direction: row;
+            -webkit-box-align: start;
+            -ms-flex-align: start;
+            align-items: flex-start;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            padding: 0 .5rem;
+            height: 1.28rem;
+            overflow: auto
+        }
+
+        .teammate-modal .content .slot-reward-list .slot-reward-item {
+            width: 16.6666666667%;
+            padding: .04rem
+        }
+
+        .teammate-modal .content .deal-hint {
+            font-size: .12rem;
+            color: #515254;
+            margin: .04rem 0
+        }
+
+        .not-show-btn {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: row;
+            flex-direction: row;
+            margin: .1rem 0;
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none
+        }
+
+        .not-show-btn>img {
+            width: .16rem
+        }
+
+        .not-show-btn>span {
+            color: #515254;
+            font-size: .1rem
+        }
+
+        .draw-modal {
+            width: 100%;
+            height: 100%
+        }
+
+        .draw-modal .content {
+            height: 100%
+        }
+
+        .draw-modal .content p.text {
+            height: 1rem
+        }
+
+        .draw-modal .content p>span {
+            margin: 0 .02rem
+        }
+
+        .draw-modal .content>.reward-list {
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: row;
+            flex-direction: row
+        }
+
+        .draw-modal .content>.reward-list>.reward-item {
+            width: .65rem
+        }
+
+        .popup-btn {
+            position: relative;
+            display: -webkit-inline-box;
+            display: -ms-inline-flexbox;
+            display: inline-flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            width: 1.2rem;
+            height: .37282rem;
+            font-size: .12rem;
+            -webkit-transition: -webkit-transform .2s;
+            transition: -webkit-transform .2s;
+            transition: transform .2s;
+            transition: transform .2s, -webkit-transform .2s;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none
+        }
+
+        .popup-btn:active {
+            -webkit-transform: scale(.95);
+            transform: scale(.95)
+        }
+
+        .popup-btn>img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: -1
+        }
+
+        .popup-btn.fade {
+            -webkit-filter: contrast(60%);
+            filter: contrast(60%)
+        }
+
+        .popup-btn[type=cancel] {
+            color: #312b64
+        }
+
+        .purchase-btn {
+            position: relative;
+            display: -webkit-inline-box;
+            display: -ms-inline-flexbox;
+            display: inline-flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            width: 1.4rem;
+            height: .36423rem;
+            font-size: .12rem;
+            -webkit-transition: -webkit-transform .2s;
+            transition: -webkit-transform .2s;
+            transition: transform .2s;
+            transition: transform .2s, -webkit-transform .2s;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none
+        }
+
+        .purchase-btn:active {
+            -webkit-transform: scale(.95);
+            transform: scale(.95)
+        }
+
+        .purchase-btn>img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: -1
+        }
+
+        .purchase-btn.fade {
+            -webkit-filter: contrast(60%);
+            filter: contrast(60%)
+        }
+
+        .purchase-btn[type=teammate] {
+            color: #000
+        }
+
+        .purchase-btn[type=buy-gray] .cp-icon:before {
+            opacity: .6
+        }
+
+        .modal-inner .close-btn {
+            position: absolute;
+            top: 0;
+            right: -.3rem;
+            width: .26rem;
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-transition: -webkit-transform .2s;
+            transition: -webkit-transform .2s;
+            transition: transform .2s;
+            transition: transform .2s, -webkit-transform .2s
+        }
+
+        .modal-inner .close-btn:active {
+            -webkit-transform: scale(.95);
+            transform: scale(.95)
+        }
+
+        .reward-item .reward-item-wrap {
+            position: relative;
+            width: 100%;
+            padding: .01rem
+        }
+
+        .reward-item .reward-item-wrap:not(.is-grand) {
+            background: rgba(17, 34, 57, .5)
+        }
+
+        .reward-item .reward-item-wrap>img {
+            display: block
+        }
+
+        .reward-item .reward-item-wrap>.frame {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 100%
+        }
+
+        .reward-item>p {
+            font-size: .08rem;
+            color: #2562be
+        }
+    </style>
+</head>
+
+<body>
+
+</body>
+
+</html>

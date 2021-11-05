@@ -21,6 +21,7 @@ class SettingController extends Controller
             'elemental' => $req->elemental,
             'sidebar' => $req->sidebar,
             'font' => $req->font,
+            'button_setting' => $req->button_setting,
         ]);
         return back()->with('msg','Đã cập nhật');
     }

@@ -1,10 +1,9 @@
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans&family=Chakra+Petch:ital,wght@1,500&family=Crimson+Pro:wght@500&family=Exo+2&family=Goldman&family=Josefin+Sans&family=Nunito:wght@600&family=Patrick+Hand+SC&family=Quicksand:wght@600&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 @if ($settingAdmin->theme == 0)
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
@@ -124,3 +123,44 @@
 
     </style>
 @endif
+
+<style type="text/css">
+    
+        #preloader {
+            position: fixed;
+            background: rgb(255, 255, 255,0.5);
+            height: 100vh;
+            width: 100%;
+            z-index: 9999
+        }
+
+        #spinner1 {
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        #spinner2 {
+            width: 100%;
+            height: 100%;
+            border-top: 15px solid LightPink;
+            border-left: 15px solid chartreuse;
+            border-right: 15px solid yellow;
+            border-bottom: 15px solid cyan;
+            border-radius: 50%;
+            animation: example 1s linear infinite;
+        }
+
+        @keyframes example {
+            0% {
+                transform: rotate(0deg),
+            }
+
+            100% {
+                transform: rotate(360deg)
+            }
+        }
+</style>

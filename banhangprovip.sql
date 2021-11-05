@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 16, 2021 at 02:11 AM
+-- Generation Time: Oct 22, 2021 at 07:35 AM
 -- Server version: 5.7.33
 -- PHP Version: 7.4.19
 
@@ -48,27 +48,50 @@ INSERT INTO `admin` (`id`, `name`, `email`, `avatar`, `password`, `remember_toke
 -- --------------------------------------------------------
 
 --
--- Table structure for table `caterory`
+-- Table structure for table `category`
 --
 
-CREATE TABLE `caterory` (
-  `id_caterory` int(11) NOT NULL,
-  `name_caterory` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+CREATE TABLE `category` (
+  `id_category` int(11) NOT NULL,
+  `name_category` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `parent_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `caterory`
+-- Dumping data for table `category`
 --
 
-INSERT INTO `caterory` (`id_caterory`, `name_caterory`) VALUES
-(46, 'Samsung'),
-(47, 'iPhone'),
-(48, 'Xiaomi'),
-(49, 'OPPO'),
-(50, 'Nokia'),
-(51, 'Vivo'),
-(52, 'Vsmart'),
-(53, 'Realme');
+INSERT INTO `category` (`id_category`, `name_category`, `parent_id`) VALUES
+(10, 'Điện thoại', NULL),
+(11, 'Máy tính', NULL),
+(46, 'Samsung', 10),
+(47, 'iPhone', 10),
+(48, 'Xiaomi', 10),
+(49, 'OPPO', 10),
+(50, 'Nokia', 10),
+(51, 'Vivo', 10),
+(52, 'Vsmart', 10),
+(53, 'Realme', 10),
+(57, 'qeqe', 56);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comment`
+--
+
+CREATE TABLE `comment` (
+  `id_comment` int(11) NOT NULL,
+  `content_comment` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `comment`
+--
+
+INSERT INTO `comment` (`id_comment`, `content_comment`) VALUES
+(1, 'sdas asd asd as das'),
+(2, 'rutrty tyrty rty rtyr');
 
 -- --------------------------------------------------------
 
@@ -99,9 +122,6 @@ INSERT INTO `order` (`id_order`, `total_order`, `status_order`, `email_order`, `
 (116, 879780000, 1, '123pachirisu@gmail.com', '1232123212', 'qweqw', 'Thần Thánh', '2021-09-07 09:25:31', '2021-09-07 11:05:18'),
 (117, 93970000, 1, '23pachirisu@gmail.com', '2', '2', 'Audi', '2021-09-07 19:28:09', '2021-09-08 07:27:25'),
 (118, 14990000, 0, '123pachirisu@gmail.com', '31231231', 'qweqwew', 'Thần Thánh', '2021-09-08 08:37:13', '2021-09-08 08:37:13'),
-(119, 699800000, 0, '1ngothanhtri@gmail.com', '231231212', 'qweq weqwe qweq', 'Thần Thánh t', '2021-09-08 11:43:24', '2021-09-08 11:43:24'),
-(120, 131020000, 1, 'wqwe@wew', '31231', 'eweqweq', 'eqweq', '2021-09-08 12:03:09', '2021-09-08 12:04:10'),
-(121, 125060000, 0, '123pachirisu@gmail.com', '1', '1', 'Audi', '2021-09-08 12:22:59', '2021-09-08 12:22:59'),
 (122, 646910000, 0, 'wqwe@wew', '12', '1212', 'Thần Thánh', '2021-09-08 12:48:04', '2021-09-08 12:48:04'),
 (123, 39990000, 0, 'admin@gmail.com', '1', '1', 'Audi', '2021-09-08 18:40:38', '2021-09-08 18:40:38'),
 (124, 45480000, 0, 'admin@gmail.com', '212', '12', 'Audi', '2021-09-08 18:41:38', '2021-09-08 18:41:38'),
@@ -111,8 +131,15 @@ INSERT INTO `order` (`id_order`, `total_order`, `status_order`, `email_order`, `
 (128, 50000000, 0, '123ngothanhtri@gmail.com', '4', '1212', 'Thần Thánh', '2021-09-09 18:11:20', '2021-09-09 18:11:20'),
 (129, 26480000, 1, '123ngothanhtri@gmail.com', '212', '121', 'Audi', '2021-09-11 10:00:58', '2021-09-12 03:10:35'),
 (130, 39990000, 1, '123ngothanhtri@gmail.com', '2312', '213', 'Thần Thánh', '2021-09-11 11:37:56', '2021-09-12 03:10:30'),
-(131, 75430000, 0, '123ngothanhtri@gmail.com', '21212121', 'a', '1ngothanhtri', '2021-09-12 10:17:14', '2021-09-12 10:17:14'),
-(132, 26990000, 0, '123ngothanhtri@gmail.com', '21212121', 'a', '1ngothanhtri', '2021-09-12 17:18:35', '2021-09-12 17:18:35');
+(133, 16990000, 0, '123ngothanhtri@gmail.com', '21212121', 'qweqweqweq', '1ngothanhtri', '2021-09-18 16:09:14', '2021-09-18 16:09:14'),
+(134, 25950000, 0, '123pachirisu@gmail.com', '21212121', 'sdas asd asd', 'Thần Thánh', '2021-10-04 11:53:38', '2021-10-04 11:53:38'),
+(135, 32980000, 0, '123ngothanhtri@gmail.com', '123654789', '5', 'Thần thánh', '2021-10-13 16:25:07', '2021-10-13 16:25:07'),
+(136, 39990000, 0, '123ngothanhtri@gmail.com', '123654789', 'w', 'Thần thánh', '2021-10-13 16:26:59', '2021-10-13 16:26:59'),
+(137, 26990000, 0, '123ngothanhtri@gmail.com', '123654789', 'e', 'Thần thánh', '2021-10-13 16:56:36', '2021-10-13 16:56:36'),
+(138, 39990000, 0, '123ngothanhtri@gmail.com', '123654789', 'we', 'Thần thánh', '2021-10-13 16:59:58', '2021-10-13 16:59:58'),
+(139, 26990000, 0, '123ngothanhtri@gmail.com', '123654789', 'e', 'Thần thánh', '2021-10-13 17:03:49', '2021-10-13 17:03:49'),
+(140, 26990000, 0, '123ngothanhtri@gmail.com', '123654789', 'a', 'Thần thánh', '2021-10-13 19:17:27', '2021-10-13 19:17:27'),
+(141, 39990000, 0, '123ngothanhtri@gmail.com', '123654789', 's', 'Thần thánh', '2021-10-13 19:18:14', '2021-10-13 19:18:14');
 
 -- --------------------------------------------------------
 
@@ -143,28 +170,6 @@ INSERT INTO `order_detail` (`id_order_detail`, `id_order`, `id_product`, `quanti
 (68, 117, 130, 2),
 (69, 117, 129, 1),
 (70, 118, 137, 1),
-(71, 119, 130, 6),
-(72, 119, 138, 3),
-(73, 119, 129, 9),
-(74, 119, 128, 3),
-(75, 119, 133, 1),
-(76, 119, 132, 1),
-(77, 120, 130, 2),
-(78, 120, 136, 2),
-(79, 120, 131, 1),
-(80, 120, 138, 1),
-(81, 120, 132, 1),
-(82, 120, 129, 1),
-(83, 121, 131, 1),
-(84, 121, 128, 1),
-(85, 121, 132, 1),
-(86, 121, 130, 2),
-(87, 122, 129, 7),
-(88, 122, 130, 5),
-(89, 122, 133, 1),
-(90, 122, 131, 4),
-(91, 122, 132, 2),
-(92, 122, 128, 3),
 (93, 123, 129, 1),
 (94, 124, 129, 1),
 (95, 124, 139, 1),
@@ -175,10 +180,18 @@ INSERT INTO `order_detail` (`id_order_detail`, `id_order`, `id_product`, `quanti
 (100, 129, 141, 1),
 (101, 129, 138, 1),
 (102, 130, 129, 1),
-(103, 131, 140, 5),
-(104, 131, 141, 1),
-(105, 131, 129, 1),
-(106, 132, 130, 1);
+(107, 133, 131, 1),
+(108, 134, 138, 2),
+(109, 134, 139, 2),
+(110, 134, 140, 1),
+(111, 135, 138, 1),
+(112, 135, 130, 1),
+(113, 136, 129, 1),
+(114, 137, 130, 1),
+(115, 138, 129, 1),
+(116, 139, 130, 1),
+(117, 140, 130, 1),
+(118, 141, 129, 1);
 
 -- --------------------------------------------------------
 
@@ -192,14 +205,14 @@ CREATE TABLE `product` (
   `description_product` text COLLATE utf8_unicode_ci,
   `price_product` int(11) NOT NULL DEFAULT '0',
   `image_product` varchar(9999) COLLATE utf8_unicode_ci NOT NULL,
-  `id_caterory` int(11) NOT NULL
+  `id_category` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`id_product`, `name_product`, `description_product`, `price_product`, `image_product`, `id_caterory`) VALUES
+INSERT INTO `product` (`id_product`, `name_product`, `description_product`, `price_product`, `image_product`, `id_category`) VALUES
 (128, 'Điện thoại Samsung Galaxy Z Fold2 5G Đặc Biệt', 'Thuộc dòng smartphone cao cấp, Samsung Galaxy Z Fold2 5G được Samsung trau chuốt không chỉ vẻ ngoài sang trọng, tinh tế mà lẫn cả “nội thất” bên trong đầy mạnh mẽ khiến chiếc smartphone này hoàn toàn xứng đáng để được sở hữu.', 50000000, 'https://cdn.tgdd.vn/Products/Images/42/232668/samsung-galaxy-z-fold-2-den-600x600-600x600.jpg', 46),
 (129, 'iPhone 12 Pro Max 512GB', 'iPhone 12 Pro Max 512GB - đẳng cấp từ tên gọi đến từng chi tiết. Ngay từ khi chỉ là tin đồn thì chiếc smartphone này đã làm đứng ngồi không yên bao “fan cứng” nhà Apple, với những nâng cấp vô cùng nổi bật hứa hẹn sẽ mang đến những trải nghiệm tốt nhất về mọi mặt mà chưa một chiếc iPhone tiền nhiệm nào có được.iPhone 12 Pro Max 512GB - đẳng cấp từ tên gọi đến từng chi tiết. Ngay từ khi chỉ là tin đồn thì chiếc smartphone này đã làm đứng ngồi không yên bao “fan cứng” nhà Apple, với những nâng cấp vô cùng nổi bật hứa hẹn sẽ mang đến những trải nghiệm tốt nhất về mọi mặt mà chưa một chiếc iPhone tiền nhiệm nào có được.', 39990000, 'https://cdn.tgdd.vn/Products/Images/42/213033/iphone-12-pro-max-xanh-duong-new-600x600-600x600.jpg', 47),
 (130, 'OPPO Find X3 Pro 5G', '<p>OPPO đ&atilde; l&agrave;m khuynh đảo thị trường smartphone khi cho ra đời chiếc điện thoại OPPO Find X3 Pro 5G. Đ&acirc;y l&agrave; một sản phẩm c&oacute; thiết kế độc đ&aacute;o, sở hữu cụm camera khủng, cấu h&igrave;nh thuộc top đầu trong thế giới Android.</p>', 26990000, 'https://cdn.tgdd.vn/Products/Images/42/232190/oppo-find-x3-pro-black-001-1-600x600.jpg', 49),
@@ -228,15 +241,16 @@ CREATE TABLE `setting_admin` (
   `elemental` tinyint(1) DEFAULT '0',
   `avatar_admin` tinyint(1) NOT NULL DEFAULT '0',
   `sidebar` tinyint(1) NOT NULL,
-  `font` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL
+  `font` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `button_setting` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `setting_admin`
 --
 
-INSERT INTO `setting_admin` (`id`, `theme`, `background_login_admin`, `effect`, `elemental`, `avatar_admin`, `sidebar`, `font`) VALUES
-(1, 13, 'https://image-cdn.essentiallysports.com/wp-content/uploads/genshin-impact-2.1-1.jpg', 0, 1, 1, 0, 'Quicksand');
+INSERT INTO `setting_admin` (`id`, `theme`, `background_login_admin`, `effect`, `elemental`, `avatar_admin`, `sidebar`, `font`, `button_setting`) VALUES
+(1, 2, 'https://i.ibb.co/fkT0N3h/z2833903782514-51b5f6dda4339aeda576e879e0d0247e.jpg', 0, 1, 1, 0, 'Exo 2', 0);
 
 -- --------------------------------------------------------
 
@@ -258,7 +272,7 @@ CREATE TABLE `setting_home` (
 --
 
 INSERT INTO `setting_home` (`id`, `slider`, `carousel_product`, `logo`, `footer1`, `footer2`) VALUES
-(1, 1, 1, 'https://th.bing.com/th/id/R.0c85e949d98d7f6a02b40b867141f08a?rik=XE5zbI6jhxmbnw&riu=http%3a%2f%2fmobile-cheats.com%2fwp-content%2fuploads%2f2020%2f11%2flogo.png&ehk=GPDodTHguDbgsibdSZ7P8Qh2ZtOH9ib24U4mj2heJ18%3d&risl=&pid=ImgRaw&r=0', '© 2018. Công ty cổ phần Thế Giới Di Động. GPDKKD: 0303217354 do sở KH & ĐT TP.HCM cấp ngày 02/01/2007. GPMXH: 238/GP-BTTTT do Bộ Thông Tin và Truyền Thông cấp ngày 04/06/2020. Địa chỉ: 128 Trần Quang Khải, P. Tân Định, Q.1, TP.Hồ Chí Minh. Điện thoại: 028 38125960. Email: cskh@thegioididong.com.', 'Copyright © 2021 - Bán sản phẩm siêu cấp');
+(1, 1, 1, 'https://i.ibb.co/HNt9VgZ/genshin-logo.png', '© 2018. Công ty cổ phần Thế Giới Di Động. GPDKKD: 0303217354 do sở KH & ĐT TP.HCM cấp ngày 02/01/2007. GPMXH: 238/GP-BTTTT do Bộ Thông Tin và Truyền Thông cấp ngày 04/06/2020. Địa chỉ: 128 Trần Quang Khải, P. Tân Định, Q.1, TP.Hồ Chí Minh. Điện thoại: 028 38125960. Email: cskh@thegioididong.com.', 'Copyright © 2021 - Bán sản phẩm siêu cấp');
 
 -- --------------------------------------------------------
 
@@ -295,10 +309,16 @@ ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `caterory`
+-- Indexes for table `category`
 --
-ALTER TABLE `caterory`
-  ADD PRIMARY KEY (`id_caterory`);
+ALTER TABLE `category`
+  ADD PRIMARY KEY (`id_category`);
+
+--
+-- Indexes for table `comment`
+--
+ALTER TABLE `comment`
+  ADD PRIMARY KEY (`id_comment`);
 
 --
 -- Indexes for table `order`
@@ -319,7 +339,7 @@ ALTER TABLE `order_detail`
 --
 ALTER TABLE `product`
   ADD PRIMARY KEY (`id_product`),
-  ADD KEY `id_loaisanpham` (`id_caterory`);
+  ADD KEY `id_loaisanpham` (`id_category`);
 
 --
 -- Indexes for table `setting_admin`
@@ -350,22 +370,28 @@ ALTER TABLE `admin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `caterory`
+-- AUTO_INCREMENT for table `category`
 --
-ALTER TABLE `caterory`
-  MODIFY `id_caterory` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+ALTER TABLE `category`
+  MODIFY `id_category` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+
+--
+-- AUTO_INCREMENT for table `comment`
+--
+ALTER TABLE `comment`
+  MODIFY `id_comment` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `order`
 --
 ALTER TABLE `order`
-  MODIFY `id_order` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=133;
+  MODIFY `id_order` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=142;
 
 --
 -- AUTO_INCREMENT for table `order_detail`
 --
 ALTER TABLE `order_detail`
-  MODIFY `id_order_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
+  MODIFY `id_order_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=119;
 
 --
 -- AUTO_INCREMENT for table `product`
@@ -406,7 +432,7 @@ ALTER TABLE `order_detail`
 -- Constraints for table `product`
 --
 ALTER TABLE `product`
-  ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`id_caterory`) REFERENCES `caterory` (`id_caterory`);
+  ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`id_category`) REFERENCES `category` (`id_category`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -22,7 +22,7 @@
                 <td>{{ $i->id_product }}</td>
                 <td><img height="100px" src="{{ $i->image_product }}"></td>
                 <td>{{ $i->name_product }}</td>
-                <td>{{ $i->name_caterory }}</td>
+                <td>{{ $i->name_category }}</td>
                 <td>{{ number_format($i->price_product) }}₫</td>
                 <td>
                     <div style="height: 100px; overflow:auto">

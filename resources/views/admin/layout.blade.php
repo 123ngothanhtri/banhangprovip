@@ -10,12 +10,18 @@
 </head>
 
 <body style=" height:101vh">
+    <div id="preloader">
+        <div id="spinner1">
+            <div id="spinner2">
+            </div>
+        </div>
+    </div>
     @if (session('msg'))
-        <div id="alerthome" class="alert alert-success animate__animated animate__bounceInLeft " style="position:fixed;top:0;left:40%;z-index:9999;transition:all ease 2s">
+        <div id="alerthome" class="alert alert-success animate__animated animate__bounceInLeft " style="position:fixed;top:0;left:30%;z-index:9999">
             <i class="fas fa-check-circle"></i> {{ session('msg') }}
         </div>
     @elseif(session('er'))
-    <div id="alerthome" class="alert alert-danger animate__animated animate__bounceInLeft " style="position:fixed;top:0;left:40%;z-index:9999;transition:all ease 2s">
+    <div id="alerthome" class="alert alert-danger animate__animated animate__bounceInLeft " style="position:fixed;top:0;left:30%;z-index:9999">
         <i class="fas fa-exclamation-triangle"></i> {{ session('er') }}
     </div>
     @else
@@ -41,7 +47,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ url('caterory') }}" class="nav-link text-white @if ($_SERVER['REQUEST_URI'] == '/banhangnhanh/public/caterory') bg-success @endif ">
+                        <a href="{{ url('category') }}" class="nav-link text-white @if ($_SERVER['REQUEST_URI'] == '/banhangnhanh/public/category') bg-success @endif ">
                             @if ($settingAdmin->elemental == 1) <img width="30px" src="https://rerollcdn.com/GENSHIN/Elements/Element_Hydro.png" alt=""> @endif
                             Danh mục
                         </a>
@@ -82,7 +88,11 @@
             <div class="w-100">
                 <nav class="navbar navbar-expand-lg navbar-light bg-warning">
                     <div class="container-fluid">
-                        <a class="navbar-brand btn" href="{{ url('/setting') }}">ㅤ</a>
+                        @if ($settingAdmin->button_setting == 1)
+                        <a class=" btn btn-sm btn-dark" href="{{ url('/setting') }}"><i class="fas fa-cog"></i> Thiết lập</a>
+                        @else
+                        <a class=" btn" href="{{ url('/setting') }}">ㅤ</a>
+                        @endif
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
@@ -107,7 +117,11 @@
             <div class="w-100">
                 <nav class="navbar navbar-expand-lg navbar-light bg-warning">
                     <div class="container-fluid">
-                        <a class="navbar-brand btn" href="{{ url('/setting') }}">ㅤ</a>
+                        @if ($settingAdmin->button_setting == 1)
+                        <a class="btn btn-sm btn-dark" href="{{ url('/setting') }}"><i class="fas fa-cog"></i> Thiết lập</a>
+                        @else
+                        <a class="btn" href="{{ url('/setting') }}">ㅤ</a>
+                        @endif
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
@@ -143,7 +157,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ url('caterory') }}" class="nav-link text-white @if ($_SERVER['REQUEST_URI'] == '/banhangnhanh/public/caterory') bg-success @endif ">
+                        <a href="{{ url('category') }}" class="nav-link text-white @if ($_SERVER['REQUEST_URI'] == '/banhangnhanh/public/category') bg-success @endif ">
                             @if ($settingAdmin->elemental == 1) <img width="30px" src="https://rerollcdn.com/GENSHIN/Elements/Element_Hydro.png" alt=""> @endif
                             Danh mục
                         </a>
@@ -183,7 +197,7 @@
                         @if ($settingAdmin->elemental == 1) <img width="30px" src="https://rerollcdn.com/GENSHIN/Elements/Element_Pyro.png" alt=""> @endif
                         Thống kê
                     </a>
-                    <a href="{{ url('caterory') }}" class="btn text-white @if ($_SERVER['REQUEST_URI'] == '/banhangnhanh/public/caterory') bg-success @endif ">
+                    <a href="{{ url('category') }}" class="btn text-white @if ($_SERVER['REQUEST_URI'] == '/banhangnhanh/public/category') bg-success @endif ">
                         @if ($settingAdmin->elemental == 1) <img width="30px" src="https://rerollcdn.com/GENSHIN/Elements/Element_Hydro.png" alt=""> @endif
                         Danh mục
                     </a>
@@ -206,7 +220,13 @@
         <div class=" w-100">
             <nav class="navbar navbar-expand-sm navbar-light bg-warning">
                 <div class="container-fluid">
-                    <a class="navbar-brand btn" href="{{ url('/setting') }}">ㅤ</a>
+
+                        @if ($settingAdmin->button_setting == 1)
+                        <a class="btn-sm btn btn-dark" href="{{ url('/setting') }}"><i class="fas fa-cog"></i> Thiết lập</a>
+                        @else
+                        <a class="btn" href="{{ url('/setting') }}">ㅤ</a>
+                        @endif
+
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>

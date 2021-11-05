@@ -40,7 +40,7 @@ class CartController extends Controller
     function orderAdd(Request $req){
 
         if(Cart::priceTotal()==0){
-            return back()->with('er','Không có sản phẩm để đặt hàng');
+            return back()->with('failure','Không có sản phẩm để đặt hàng');
         }
 
         $order = new Order;

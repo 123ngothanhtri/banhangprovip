@@ -2,22 +2,22 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\Models\Caterory;
+use App\Models\Category;
 use App\Models\Product;
 use App\Models\OrderDetail;
 
 class ProductController extends Controller
 {
     function product(){
-        $product = Product::join('caterory','caterory.id_caterory','product.id_caterory')->orderBy('id_product','desc')->paginate(10);
+        $product = Product::join('category','category.id_category','product.id_category')->orderBy('id_product','desc')->paginate(10);
 
         return view('admin.product',compact('product'));
     }
     function productCreate(){
         $product = Product::all();
-        $caterory = Caterory::all();
+        $category = Category::all();
 
-        return view('admin.product_create',compact('product','caterory'));
+        return view('admin.product_create',compact('product','category'));
     }
     public function productAdd(Request $req)
     {
@@ -26,7 +26,7 @@ class ProductController extends Controller
         $product->price_product = $req->price_product;
         $product->image_product = $req->image_product;
         $product->description_product = $req->description_product;
-        $product->id_caterory = $req->id_caterory;
+        $product->id_category = $req->id_category;
         $product->save();
         return redirect('/product')->with('msg','Đã thêm');
     }

@@ -18,6 +18,7 @@
                 <input class="form-control form-control-sm" value="{{ $settingHome->footer2 }}" type="text" name="footer2" required>
 
                 <table>
+                    
                     <tr>
                         <th>
                             Slider
@@ -156,6 +157,19 @@
                 </div>
 
                 <table>
+                    <tr>
+                        <th>
+                            Nút thiết lập
+                        </th>
+                        <td>
+                                <input type="radio" class="custom-control-input" id="button_setting" name="button_setting" value="0" @if ($settingAdmin->button_setting == 0) checked @endif>
+                                <label class="custom-control-label" for="button_setting">Ẩn</label>
+                        </td>
+                        <td>
+                            <input type="radio" class="custom-control-input" id="button_setting2" name="button_setting" value="1" @if ($settingAdmin->button_setting == 1) checked @endif>
+                                <label class="custom-control-label" for="button_setting2">Hiện</label>
+                        </td>
+                    </tr>
                     <tr>
                         <th>
                             Tuyết rơi

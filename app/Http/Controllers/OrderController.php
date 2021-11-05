@@ -16,7 +16,7 @@ class OrderController extends Controller
     }
     function orderDelete($id){
         $orderDetail = OrderDetail::where('id_order',$id)->delete();
-        Order::destroy($iddh);
+        Order::destroy($id);
         return back()->with('msg','Đã xóa');
     }
     function orderStatus($id){

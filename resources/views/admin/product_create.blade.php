@@ -6,9 +6,9 @@
         <input class="form-control" type="text" name="name_product" maxlength="100" required>
 
         Danh mục
-        <select class="form-select" name="id_caterory">
-            @foreach ($caterory as $i)
-                <option value="{{ $i->id_caterory }}">{{ $i->name_caterory }}</option>
+        <select class="form-select" name="id_category">
+            @foreach ($category as $i)
+                <option value="{{ $i->id_category }}">{{ $i->name_category }}</option>
             @endforeach
         </select>
         

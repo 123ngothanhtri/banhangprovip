@@ -8,8 +8,8 @@
         <div class="row alert-info m-2 rounded">
 
             <div class="col-md-6 px-3 py-2">
-                <span class="fw-bold">Đơn hàng {{ $o->id_order }}</span>
-                <span class="fw-light ">{{ $o->created_at }}</span>
+                <span class="fw-bold" style="font-size:20px">Đơn hàng {{ $o->id_order }}</span>
+                <span class="fw-light ">({{ $o->created_at }} - {{ $o->created_at->diffForHumans() }})</span>
                 <div class="text-danger">Tổng tiền: {{ number_format($o->total_order) }}₫</div>
                 <div>Tên: {{ $o->name_order }}</div>
                 <div>Email: {{ $o->email_order }}</div>
